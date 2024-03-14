@@ -1,5 +1,5 @@
 .header{
-    height: 120px;
+    height: var(--header-height);
     width: 100%;
     background-image: linear-gradient(0,#fe6132,#f5402d);
 
@@ -8,6 +8,7 @@
 .navbar{
     display: flex;
     justify-content: space-between;
+    margin: 0 40px;
 }
 
 .navbar-list{
@@ -102,6 +103,7 @@
     animation: notifyGrow ease 0.3s;
     display: none;
     will-change: opacity, transform; /*giúp browser tối ưu hóa hiệu suất*/
+    z-index: 3;
 
 }
 
@@ -233,6 +235,7 @@
     left: 0;
     display: flex;
     justify-content: center;
+    animation: fadeIn linear 0.1s ;
 }
 
 .modal_overlay {
@@ -244,12 +247,14 @@
 
 .modal_body {
     position: relative;
+    --growth-from: 0.7;
+    --growth-to: 1;
     /* width: 300px;
     height: 300px; */
     margin: auto;
     z-index: 1;
+    animation: growth linear 0.1s;
 }
-
 
 /* Authen modal */
 .auth-form{
@@ -268,6 +273,8 @@
     align-items: center; /*flex-item căn ngang*/
     justify-content: space-between; /*cách xa nhau, căng đều*/
     user-select: none;
+    padding: 0 12px;
+    margin-top: 10px;
 }
 
 .auth-form__heading{
@@ -292,7 +299,7 @@
     margin-top: 16px;
     padding: 0  12px;
     border: 1px solid var(--border-color);
-    border-radius: 3px;
+    border-radius: 2px;
     outline: none;
     font-size: 1.4rem;
 }
@@ -355,5 +362,318 @@
 }
 
 .auth-form__socials-title{
-    margin: 0 36px;
+    margin: 0 24px;
+}
+
+.auth-form__help{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.auth-form__help-link{
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: #939393;
+}
+
+.auth-form__help-separate{
+    display: block;
+    height: 18px;
+    margin: 0 16px;
+    border-left: 2px solid var(--border-color);
+}
+
+.auth-form__help-forgot{
+    color: var(--primary-color);
+}
+
+/* Header search */
+
+.header-with-search{
+    height: var(--header-search);
+
+    /* đặt logo và các đối tượng khác vào giữa chiều cao */
+    display: flex;
+    align-items: center; /*căn giữa trực cross axis*/
+    margin: 0 60px;
+
+}
+
+.header__search{
+    height: 40px;
+    background-color: var(--white-color);
+    flex: 1;
+    border-radius: 4px;
+    /* overflow: hidden sẽ làm cho các lớp con của đối tượng bị hidden sẽ bị hide luôn */
+    display: flex;
+    align-items: center;
+}
+
+.header__logo{
+    width: 200px;
+}
+
+.header__logo-img{
+    width: 150px;
+    color: var(--white-color);
+}
+
+.header__cart-wrap{
+    position: relative;
+    display: inline-block; /**/
+    padding: 12px; /**/
+    cursor: pointer;
+}   
+
+.header__cart{
+    width: 150px;
+    text-align: center;
+} 
+
+.header__cart-list::after{
+    content: "";
+    position: absolute;
+    right: -1px; 
+    top: -21px;
+    border-width: 15px 27px; 
+    border-style: solid;
+    border-color: transparent transparent var(--white-color) transparent;
+    cursor: pointer;
+}
+
+.header__cart-icon{
+    font-size: 2.4rem;
+    color: var(--white-color);
+    margin-top: 6px;
+    z-index: 1;
+}
+
+.header__cart-wrap:hover .header__cart-list{
+    display: block;
+}
+
+.header__cart-list{
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 3px;
+    background-color: var(--white-color);
+    width: 400px;
+    border-radius: 2px;
+    box-shadow: 0 2px 10px #ccc;
+    /* display: none; */
+    animation: fadeIn ease-in 0.2s;
+    cursor: default;
+}
+
+/* have no products, show by image*/
+.header__cart-list--no-cart{
+    padding: 28px 0;
+}   
+
+/* Khi no-cart được gọi => bật 2 thg kia lên */
+.header__cart-list--no-cart .header__cart-list-no-cart-msg,
+.header__cart-list--no-cart .header__cart-no-cart-img{
+    display: block;
+    margin-left: auto; /*thay vì dùng margin auto để căn thì dùng này tránh ghi đè config khác*/
+    margin-right: auto;
+}
+
+.header__cart-no-cart-img{
+    width: 60%;
+    display: none; /*ẩn đi chỉ active khi no cart class được dùng*/
+}
+
+
+.header__cart-list-no-cart-msg{
+    /* display: block; */
+    font-size: 1.4rem;
+    margin-top: 12px;
+    color: var(--text-color);
+    display: none; /*ẩn đi chỉ active khi no cart class được dùng*/
+
+}
+
+.header__cart-notice{
+    position: absolute;
+    padding: 2px 5px;
+    top: 8px;
+    right: 4px;
+    line-height: 1rem;
+    font-size: 1rem;
+    color: var(--primary-color);
+    background-color: var(--white-color);
+    border-radius: 16px;
+    border: 2px solid #ee4d2d;
+
+}   
+
+
+
+
+.header__search-input-wrap{
+    flex: 1;
+    height: 100%;
+    position: relative;
+}
+
+.header__search-input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    padding: 0 16px;
+    border-radius: 4px; /*dùng border-radius thay cho overflow:hidden ở trên*/
+}
+
+.header__search-select{
+    border-left: 1px solid #e8e8e8;
+    padding-left: 16px;
+    position: relative;
+    cursor: pointer;
+}
+
+
+.header__search-select-label{
+    color: var(--text-color);
+    font-size: 1.4rem;
+}   
+
+.header__search-select-icon{
+    font-size: 1.4rem;
+    color: #939191;
+    margin: 0 16px 0 8px;
+    position: relative;
+    top: 1px
+
+}
+
+.header__search-btn{
+    background-color: var(--primary-color);
+    border: none;
+    height: 34px;
+    border-radius: 2px;
+    margin-right: 3px;
+    width: 60px;
+    cursor: pointer;
+}
+
+.header__search-btn:hover{
+    background-color: #fb6445;
+}
+
+
+.header__search-btn-icon{
+    font-size: 1.4rem;
+    color: var(--white-color);
+}
+
+.header__search-select:hover .header__search-option {
+    display: block;
+}
+
+.header__search-option{
+    position: absolute;
+    right: 0;
+    top: 134%;
+    width: 130px;
+    list-style: none;
+    box-shadow: 0 1px 3px #ccc;
+    padding-left: 0;
+    border-radius: 2px;
+    display: none;
+    animation: fadeIn ease-in 0.2s;
+    background-color: var(--white-color);
+}   
+
+
+.header__search-select::before{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 30px;
+    /* background-color: red; */
+    position: absolute;
+    left: -2px;
+    bottom: -25px;
+
+}
+
+.header__search-option-item{
+    background-color: var(--white-color);
+    padding: 8px;
+
+}
+
+
+.header__search-option-item:hover{
+    background-color: #f4eded;
+    cursor: pointer;
+}
+
+.header__search-option-item span{
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin-left: 8px;
+}
+
+.header__search-option-item i{
+    font-size: 1.2rem; 
+    color: var(--primary-color);
+    margin-left: 12px;
+    display: none;
+} 
+
+.header__search-option-active i{
+    display: inline-block;
+}
+
+.header__search-input:focus ~ .header__search-history{
+    display: block;
+}
+
+/* search history */
+
+.header__search-history{
+    position: absolute;
+    left: 0;
+    top: calc(100% + 4px);
+    width: calc(100% - 25px);
+    background-color: var(--white-color);
+    border-radius: 2px;
+    box-shadow: 0 0 3px #ccc;
+    display: none;
+}
+
+.header__search-history-heading{
+    margin: 6px 12px ;
+    font-size: 1.4rem;
+    color: #999;
+    font-weight: 400;
+}
+
+.header__search-history-list{
+    padding-left: 0;
+    list-style: none;
+    margin: 8px 0 0;
+
+}
+
+.header__search-history-item{
+    height: 38px; /*...*/
+    padding: 0 12px;
+}
+
+.header__search-history-item:hover{
+    background-color: #fafafa;
+}
+
+.header__search-history-item a{
+    text-decoration: none;
+    font-size: 1.4rem;
+    line-height: 38px; /*căn giữa chữ theo chiều dọc*/
+    color: var(--text-color);
+    display: block;
+
 }

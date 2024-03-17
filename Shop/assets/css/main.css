@@ -1078,7 +1078,7 @@
     margin-top: 10px;
     position: relative;
     border-radius: 2px;
-    overflow: hidden;
+    /* overflow: hidden; */
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 
     /* nếu có chuyển động liên qua tới transform thì chuyển động trong vòng 0.1s với linear */
@@ -1236,10 +1236,15 @@ i.home-product-item__like-icon-fill{ /*tăng độ ưu tiên*/
     content: "";
     position: absolute;
     left: 0;
-    bottom: -2px;
+    bottom: -3px;
     border-top: 3px solid currentColor;
     border-left: 3px solid transparent;
     filter: brightness(60%); /*gỉảm độ sáng đi, cho nó đậm lại*/
+}
+
+.home-product-item__img{
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
 }
 
 .home-product-item__sale-off{
@@ -1251,6 +1256,7 @@ i.home-product-item__like-icon-fill{ /*tăng độ ưu tiên*/
     background-color: rgb(255 233 122);
     text-align: center;
     border-bottom-left-radius: 2px;
+    border-top-right-radius: 2px;
 
 }   
 

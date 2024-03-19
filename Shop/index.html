@@ -5,8 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Huy Na Shop</title>
-    <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/grid.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+
+
     <!-- loại bỏ các css mặc định của browser -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
         integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
@@ -25,8 +29,8 @@
 <body>
     <div class="app noselect">
         <header class="header">
-            <div class="grid">
-                <nav class="navbar">
+            <div class="grid wide">
+                <nav class="navbar hide-on-mobile-tablet">
                     <ul class="navbar-list">
                         <li class="navbar-item separate appear_qr ">
                             Tải ứng dụng
@@ -152,7 +156,13 @@
                 </nav>
                 <!-- Header search -->
                 <div class="header-with-search">
-                    <div class="header__logo">
+                    <!-- trượt từ trong ra, khi checkbox đc check -->
+                    <label for="mobile-search-checkbox" class="header__mobile-search">
+                        <i class="header__mobile-search-icon fas fa-search"></i>
+                    </label>
+
+
+                    <div class="header__logo hide-on-tablet">
                         <!-- Copy outerHTML trên shopee F12, sau đó bỏ vào Beautiful HTML Format -->
                         <!-- main page's path -->
                         <a href="/Shop/index.html" class="header__logo-link">
@@ -167,8 +177,11 @@
                         </a>
                     </div>
 
-                    <div class="header__search">
-                        <div class="header__search-input-wrap">
+                    <!-- trượt từ trong ra, khi checkbox đc check -->
+                    <input type="checkbox" hidden id="mobile-search-checkbox" class="header-search-checkbox">
+
+                    <div class=" header__search ">
+                        <div class=" header__search-input-wrap">
                             <input type="text" class="header__search-input" placeholder="Tìm kiếm sản phẩm">
 
                             <!-- Search -->
@@ -545,726 +558,763 @@
 
                 </div>
             </div>
+
+            <ul class="header__bar">
+                <li class="header__bar-item">
+                    <a href="" class="header__bar-link">Shop</a>
+                </li>
+
+                <li class="header__bar-item header__bar-item--active">
+                    <a href="" class="header__bar-link">Sản phẩm</a>
+                </li>
+
+                <li class="header__bar-item">
+                    <a href="" class="header__bar-link">Danh mục hàng</a>
+                </li>
+
+                <li class="header__bar-item">
+                    <a href="" class="header__bar-link">Live</a>
+                </li>
+            </ul>
+
+            <ul class="header__bar_product">
+                <li class="header__bar_product-item">
+                    <a href="" class="header__bar_product-link">Phổ biến</a>
+                </li>
+
+                <li class="header__bar_product-item header__bar_product-item--active">
+                    <a href="" class="header__bar_product-link">Mới nhất</a>
+                </li>
+
+                <li class="header__bar_product-item">
+                    <a href="" class="header__bar_product-link">Bán chạy</a>
+                </li>
+
+                <li class="header__bar_product-item">
+                    <a href="" class="header__bar_product-link">Giá</a>
+                </li>
+            </ul>
+
+
         </header>
 
-    </div>
 
-
-    <div class="app__container">
-        <div class="grid">
-            <div class="grid__row app__content">
-                <div class="grid__column-2">
-                    <nav class="category">
-                        <h3 class="category__heading">
-                            <i class="category__heading-icon fas fa-list"></i>
-                            Danh mục
-                        </h3>
-                        <ul class="category-list">
-                            <li class="category-item category-item--active">
-                                <a href="#" class="category-item__link">Thiết Bị Điện Tử</a>
-                            </li>
-                            <li class="category-item">
-                                <a href="#" class="category-item__link">Thiết bị đeo thông minh</a>
-                            </li>
-                            <li class="category-item">
-                                <a href="#" class="category-item__link">Phụ kiện tivi</a>
-                            </li>
-                            <li class="category-item">
-                                <a href="#" class="category-item__link">Máy Game Console</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="grid__column-10">
-                    <div class="home-filter">
-                        <span class="home-filter__label">Sắp xếp theo</span>
-                        <button class=" home-filter__btn btn">Phổ biến</button>
-                        <button class=" home-filter__btn btn btn--primary">Mới nhất</button>
-                        <button class=" home-filter__btn btn">Bán chạy</button>
-                        <div class="select-input">
-                            <span class="select-input__label">Giá</span>
-                            <i class="select-input__icon fas fa-chevron-down"></i>
-
-                            <!-- List option  -->
-                            <ul class="select-input__list">
-                                <li class="select-input__item">
-                                    <a href="" class="select-input__link">
-                                        Giá: thấp đến cao
-                                    </a>
+        <div class="app__container">
+            <div class="grid wide">
+                <div class="row sm-gutter app__content">
+                    <div class="col l-2 m-0 c-0">
+                        <nav class="category">
+                            <h3 class="category__heading">
+                                <i class="category__heading-icon fas fa-list"></i>
+                                Danh mục
+                            </h3>
+                            <ul class="category-list">
+                                <li class="category-item category-item--active">
+                                    <a href="#" class="category-item__link">Thiết Bị Điện Tử</a>
                                 </li>
-                                <li class="select-input__item">
-                                    <a href="" class="select-input__link">
-                                        Giá: cao đến thấp
-                                    </a>
+                                <li class="category-item">
+                                    <a href="#" class="category-item__link">Thiết bị đeo thông minh</a>
+                                </li>
+                                <li class="category-item">
+                                    <a href="#" class="category-item__link">Phụ kiện tivi</a>
+                                </li>
+                                <li class="category-item">
+                                    <a href="#" class="category-item__link">Máy Game Console</a>
                                 </li>
                             </ul>
-                        </div>
-
-                        <div class="home-filter__page">
-                            <span class="home-filter__page-num">
-                                <span class="home-filter__page-current">1</span>/14
-                            </span>
-                            <div class="home-filter__page-control">
-                                <a href="" class="home-filter__page-btn home-filter__page-btn--disable">
-                                    <i class="home-filter__page-icon fas fa-chevron-left"></i>
-                                </a>
-                                <a href="" class="home-filter__page-btn">
-                                    <i class="home-filter__page-icon fas fa-chevron-right"></i>
-                                </a>
-                            </div>
-                        </div>
+                        </nav>
                     </div>
+                    <div class="col l-10 m-12 c-12">
+                        <div class="home-filter hide-on-mobile-tablet">
+                            <span class="home-filter__label">Sắp xếp theo</span>
+                            <button class=" home-filter__btn btn">Phổ biến</button>
+                            <button class=" home-filter__btn btn btn--primary">Mới nhất</button>
+                            <button class=" home-filter__btn btn">Bán chạy</button>
+                            <div class="select-input">
+                                <span class="select-input__label">Giá</span>
+                                <i class="select-input__icon fas fa-chevron-down"></i>
 
-                    <div class="home-product">
-                        <!-- quy chuẩn là grid -> row -> column -->
-                        <div class="grid__row">
-                            <!-- product item -->
-                            <div class="grid__column-2-5">
-                                <a class="home-product-item" href="#">
-                                    <div class="home-product-item__img"
-                                        style="background-image: url(./assets/images/notify.jpg);"></div>
-
-                                    <h4 class="home-product-item__name">
-                                        Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
-                                        chơi game cao cấp chống mồ hôi ngón tay tốt
-                                    </h4>
-
-                                    <div class="home-product-item__price">
-                                        <span class="home-product-item__price-old">1.200.000đ</span>
-                                        <span class="home-product-item__price-current">960.000đ</span>
-                                    </div>
-
-                                    <div class="home-product-item__action">
-                                        <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
-                                        <span class="home-product-item__like home-product-item__like--liked">
-                                            <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                            <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                        </span>
-
-                                        <div class="home-product-item__rating">
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <span class="home-product-item__sold">Đã bán 2,2k</span>
-                                    </div>
-
-
-                                    <div class="home-product-item__location">
-                                        TP. Hồ Chí Minh
-                                    </div>
-
-                                    <div class="home-product-item__favourite">
-                                        <i class="fas fa-check"></i>
-                                        <span>Yêu thích</span>
-                                    </div>
-
-                                    <div class="home-product-item__sale-off">
-                                        <span class="home-product-item__sale-off-percent">-20%</span>
-                                        <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
-                                    </div>
-                                </a>
+                                <!-- List option  -->
+                                <ul class="select-input__list">
+                                    <li class="select-input__item">
+                                        <a href="" class="select-input__link">
+                                            Giá: thấp đến cao
+                                        </a>
+                                    </li>
+                                    <li class="select-input__item">
+                                        <a href="" class="select-input__link">
+                                            Giá: cao đến thấp
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
 
-                            <div class="grid__column-2-5">
-                                <a class="home-product-item" href="#">
-                                    <div class="home-product-item__img"
-                                        style="background-image: url(./assets/images/notify.jpg);"></div>
-
-                                    <h4 class="home-product-item__name">
-                                        Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
-                                        chơi game cao cấp chống mồ hôi ngón tay tốt
-                                    </h4>
-
-                                    <div class="home-product-item__price">
-                                        <span class="home-product-item__price-old">1.200.000đ</span>
-                                        <span class="home-product-item__price-current">960.000đ</span>
-                                    </div>
-
-                                    <div class="home-product-item__action">
-                                        <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
-                                        <span class="home-product-item__like ">
-                                            <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                            <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                        </span>
-
-                                        <div class="home-product-item__rating">
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <span class="home-product-item__sold">Đã bán 2,2k</span>
-                                    </div>
-
-
-                                    <div class="home-product-item__location">
-                                        TP. Hồ Chí Minh
-                                    </div>
-
-                                    <div class="home-product-item__favourite">
-                                        <i class="fas fa-check"></i>
-                                        <span>Yêu thích</span>
-                                    </div>
-
-                                    <div class="home-product-item__sale-off">
-                                        <span class="home-product-item__sale-off-percent">-20%</span>
-                                        <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="grid__column-2-5">
-                                <a class="home-product-item" href="#">
-                                    <div class="home-product-item__img"
-                                        style="background-image: url(./assets/images/notify.jpg);"></div>
-
-                                    <h4 class="home-product-item__name">
-                                        Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
-                                        chơi game cao cấp chống mồ hôi ngón tay tốt
-                                    </h4>
-
-                                    <div class="home-product-item__price">
-                                        <span class="home-product-item__price-old">1.200.000đ</span>
-                                        <span class="home-product-item__price-current">960.000đ</span>
-                                    </div>
-
-                                    <div class="home-product-item__action">
-                                        <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
-                                        <span class="home-product-item__like ">
-                                            <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                            <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                        </span>
-
-                                        <div class="home-product-item__rating">
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <span class="home-product-item__sold">Đã bán 2,2k</span>
-                                    </div>
-
-
-                                    <div class="home-product-item__location">
-                                        TP. Hồ Chí Minh
-                                    </div>
-
-                                    <div class="home-product-item__favourite">
-                                        <i class="fas fa-check"></i>
-                                        <span>Yêu thích</span>
-                                    </div>
-
-                                    <div class="home-product-item__sale-off">
-                                        <span class="home-product-item__sale-off-percent">-20%</span>
-                                        <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="grid__column-2-5">
-                                <a class="home-product-item" href="#">
-                                    <div class="home-product-item__img"
-                                        style="background-image: url(./assets/images/notify.jpg);"></div>
-
-                                    <h4 class="home-product-item__name">
-                                        Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
-                                        chơi game cao cấp chống mồ hôi ngón tay tốt
-                                    </h4>
-
-                                    <div class="home-product-item__price">
-                                        <span class="home-product-item__price-old">1.200.000đ</span>
-                                        <span class="home-product-item__price-current">960.000đ</span>
-                                    </div>
-
-                                    <div class="home-product-item__action">
-                                        <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
-                                        <span class="home-product-item__like home-product-item__like--liked">
-                                            <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                            <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                        </span>
-
-                                        <div class="home-product-item__rating">
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <span class="home-product-item__sold">Đã bán 2,2k</span>
-                                    </div>
-
-
-                                    <div class="home-product-item__location">
-                                        TP. Hồ Chí Minh
-                                    </div>
-
-                                    <div class="home-product-item__favourite">
-                                        <i class="fas fa-check"></i>
-                                        <span>Yêu thích</span>
-                                    </div>
-
-                                    <div class="home-product-item__sale-off">
-                                        <span class="home-product-item__sale-off-percent">-20%</span>
-                                        <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="grid__column-2-5">
-                                <a class="home-product-item" href="#">
-                                    <div class="home-product-item__img"
-                                        style="background-image: url(./assets/images/notify.jpg);"></div>
-
-                                    <h4 class="home-product-item__name">
-                                        Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
-                                        chơi game cao cấp chống mồ hôi ngón tay tốt
-                                    </h4>
-
-                                    <div class="home-product-item__price">
-                                        <span class="home-product-item__price-old">1.200.000đ</span>
-                                        <span class="home-product-item__price-current">960.000đ</span>
-                                    </div>
-
-                                    <div class="home-product-item__action">
-                                        <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
-                                        <span class="home-product-item__like ">
-                                            <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                            <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                        </span>
-
-                                        <div class="home-product-item__rating">
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <span class="home-product-item__sold">Đã bán 2,2k</span>
-                                    </div>
-
-
-                                    <div class="home-product-item__location">
-                                        TP. Hồ Chí Minh
-                                    </div>
-
-                                    <div class="home-product-item__favourite">
-                                        <i class="fas fa-check"></i>
-                                        <span>Yêu thích</span>
-                                    </div>
-
-                                    <div class="home-product-item__sale-off">
-                                        <span class="home-product-item__sale-off-percent">-20%</span>
-                                        <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="grid__column-2-5">
-                                <a class="home-product-item" href="#">
-                                    <div class="home-product-item__img"
-                                        style="background-image: url(./assets/images/notify.jpg);"></div>
-
-                                    <h4 class="home-product-item__name">
-                                        Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
-                                        chơi game cao cấp chống mồ hôi ngón tay tốt
-                                    </h4>
-
-                                    <div class="home-product-item__price">
-                                        <span class="home-product-item__price-old">1.200.000đ</span>
-                                        <span class="home-product-item__price-current">960.000đ</span>
-                                    </div>
-
-                                    <div class="home-product-item__action">
-                                        <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
-                                        <span class="home-product-item__like home-product-item__like--liked">
-                                            <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                            <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                        </span>
-
-                                        <div class="home-product-item__rating">
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <span class="home-product-item__sold">Đã bán 2,2k</span>
-                                    </div>
-
-
-                                    <div class="home-product-item__location">
-                                        TP. Hồ Chí Minh
-                                    </div>
-
-                                    <div class="home-product-item__favourite">
-                                        <i class="fas fa-check"></i>
-                                        <span>Yêu thích</span>
-                                    </div>
-
-                                    <div class="home-product-item__sale-off">
-                                        <span class="home-product-item__sale-off-percent">-20%</span>
-                                        <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="grid__column-2-5">
-                                <a class="home-product-item" href="#">
-                                    <div class="home-product-item__img"
-                                        style="background-image: url(./assets/images/notify.jpg);"></div>
-
-                                    <h4 class="home-product-item__name">
-                                        Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
-                                        chơi game cao cấp chống mồ hôi ngón tay tốt
-                                    </h4>
-
-                                    <div class="home-product-item__price">
-                                        <span class="home-product-item__price-old">1.200.000đ</span>
-                                        <span class="home-product-item__price-current">960.000đ</span>
-                                    </div>
-
-                                    <div class="home-product-item__action">
-                                        <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
-                                        <span class="home-product-item__like home-product-item__like--liked">
-                                            <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                            <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                        </span>
-
-                                        <div class="home-product-item__rating">
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <span class="home-product-item__sold">Đã bán 2,2k</span>
-                                    </div>
-
-
-                                    <div class="home-product-item__location">
-                                        TP. Hồ Chí Minh
-                                    </div>
-
-                                    <div class="home-product-item__favourite">
-                                        <i class="fas fa-check"></i>
-                                        <span>Yêu thích</span>
-                                    </div>
-
-                                    <div class="home-product-item__sale-off">
-                                        <span class="home-product-item__sale-off-percent">-20%</span>
-                                        <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="grid__column-2-5">
-                                <a class="home-product-item" href="#">
-                                    <div class="home-product-item__img"
-                                        style="background-image: url(./assets/images/notify.jpg);"></div>
-
-                                    <h4 class="home-product-item__name">
-                                        Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
-                                        chơi game cao cấp chống mồ hôi ngón tay tốt
-                                    </h4>
-
-                                    <div class="home-product-item__price">
-                                        <span class="home-product-item__price-old">1.200.000đ</span>
-                                        <span class="home-product-item__price-current">960.000đ</span>
-                                    </div>
-
-                                    <div class="home-product-item__action">
-                                        <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
-                                        <span class="home-product-item__like home-product-item__like--liked">
-                                            <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                            <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                        </span>
-
-                                        <div class="home-product-item__rating">
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <span class="home-product-item__sold">Đã bán 2,2k</span>
-                                    </div>
-
-
-                                    <div class="home-product-item__location">
-                                        TP. Hồ Chí Minh
-                                    </div>
-
-                                    <div class="home-product-item__favourite">
-                                        <i class="fas fa-check"></i>
-                                        <span>Yêu thích</span>
-                                    </div>
-
-                                    <div class="home-product-item__sale-off">
-                                        <span class="home-product-item__sale-off-percent">-20%</span>
-                                        <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="grid__column-2-5">
-                                <a class="home-product-item" href="#">
-                                    <div class="home-product-item__img"
-                                        style="background-image: url(./assets/images/notify.jpg);"></div>
-
-                                    <h4 class="home-product-item__name">
-                                        Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
-                                        chơi game cao cấp chống mồ hôi ngón tay tốt
-                                    </h4>
-
-                                    <div class="home-product-item__price">
-                                        <span class="home-product-item__price-old">1.200.000đ</span>
-                                        <span class="home-product-item__price-current">960.000đ</span>
-                                    </div>
-
-                                    <div class="home-product-item__action">
-                                        <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
-                                        <span class="home-product-item__like home-product-item__like--liked">
-                                            <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                            <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                        </span>
-
-                                        <div class="home-product-item__rating">
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <span class="home-product-item__sold">Đã bán 2,2k</span>
-                                    </div>
-
-
-                                    <div class="home-product-item__location">
-                                        TP. Hồ Chí Minh
-                                    </div>
-
-                                    <div class="home-product-item__favourite">
-                                        <i class="fas fa-check"></i>
-                                        <span>Yêu thích</span>
-                                    </div>
-
-                                    <div class="home-product-item__sale-off">
-                                        <span class="home-product-item__sale-off-percent">-20%</span>
-                                        <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="grid__column-2-5">
-                                <a class="home-product-item" href="#">
-                                    <div class="home-product-item__img"
-                                        style="background-image: url(./assets/images/notify.jpg);"></div>
-
-                                    <h4 class="home-product-item__name">
-                                        Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
-                                        chơi game cao cấp chống mồ hôi ngón tay tốt
-                                    </h4>
-
-                                    <div class="home-product-item__price">
-                                        <span class="home-product-item__price-old">1.200.000đ</span>
-                                        <span class="home-product-item__price-current">960.000đ</span>
-                                    </div>
-
-                                    <div class="home-product-item__action">
-                                        <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
-                                        <span class="home-product-item__like home-product-item__like--liked">
-                                            <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                            <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                        </span>
-
-                                        <div class="home-product-item__rating">
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="home-product-item__star--gold fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <span class="home-product-item__sold">Đã bán 2,2k</span>
-                                    </div>
-
-
-                                    <div class="home-product-item__location">
-                                        TP. Hồ Chí Minh
-                                    </div>
-
-                                    <div class="home-product-item__favourite">
-                                        <i class="fas fa-check"></i>
-                                        <span>Yêu thích</span>
-                                    </div>
-
-                                    <div class="home-product-item__sale-off">
-                                        <span class="home-product-item__sale-off-percent">-20%</span>
-                                        <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
-                                    </div>
-                                </a>
+                            <div class="home-filter__page">
+                                <span class="home-filter__page-num">
+                                    <span class="home-filter__page-current">1</span>/14
+                                </span>
+                                <div class="home-filter__page-control">
+                                    <a href="" class="home-filter__page-btn home-filter__page-btn--disable">
+                                        <i class="home-filter__page-icon fas fa-chevron-left"></i>
+                                    </a>
+                                    <a href="" class="home-filter__page-btn">
+                                        <i class="home-filter__page-icon fas fa-chevron-right"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <ul class="pagination home-product__pagination">
-                        <li class="pagination-item">
-                            <a href="" class="pagination-item__link">
-                                <i class="pagination-item__icon fas fa-chevron-left"></i>
-                            </a>
-                        </li>
+                        <div class="home-product">
+                            <!-- quy chuẩn là grid -> row -> column -->
+                            <div class="row sm-gutter">
+                                <!-- product item -->
+                                <div class="col l-2-4 m-4 c-6">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img"
+                                            style="background-image: url(./assets/images/notify.jpg);"></div>
+
+                                        <h4 class="home-product-item__name">
+                                            Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
+                                            chơi game cao cấp chống mồ hôi ngón tay tốt
+                                        </h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">1.200.000đ</span>
+                                            <span class="home-product-item__price-current">960.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__action">
+                                            <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty far fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fas fa-heart"></i>
+                                            </span>
+
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">Đã bán 2,2k</span>
+                                        </div>
 
 
-                        <li class="pagination-item pagination-item--actice">
-                            <a href="" class="pagination-item__link">1</a>
-                        </li>
+                                        <div class="home-product-item__location">
+                                            TP. Hồ Chí Minh
+                                        </div>
 
-                        <li class="pagination-item">
-                            <a href="" class="pagination-item__link">2</a>
-                        </li>
+                                        <div class="home-product-item__favourite">
+                                            <i class="fas fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
 
-                        <li class="pagination-item">
-                            <a href="" class="pagination-item__link">3</a>
-                        </li>
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-20%</span>
+                                            <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
+                                        </div>
+                                    </a>
+                                </div>
 
-                        <li class="pagination-item">
-                            <a href="" class="pagination-item__link">4</a>
-                        </li>
+                                <div class="col l-2-4 m-4 c-6">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img"
+                                            style="background-image: url(./assets/images/notify.jpg);"></div>
 
-                        <li class="pagination-item">
-                            <a href="" class="pagination-item__link">5</a>
-                        </li>
+                                        <h4 class="home-product-item__name">
+                                            Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
+                                            chơi game cao cấp chống mồ hôi ngón tay tốt
+                                        </h4>
 
-                        <li class="pagination-item">
-                            <a href="" class="pagination-item__link">...</a>
-                        </li>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">1.200.000đ</span>
+                                            <span class="home-product-item__price-current">960.000đ</span>
+                                        </div>
 
-                        <li class="pagination-item">
-                            <a href="" class="pagination-item__link">14</a>
-                        </li>
+                                        <div class="home-product-item__action">
+                                            <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
+                                            <span class="home-product-item__like ">
+                                                <i class="home-product-item__like-icon-empty far fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fas fa-heart"></i>
+                                            </span>
+
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">Đã bán 2,2k</span>
+                                        </div>
 
 
-                        <li class="pagination-item">
-                            <a href="" class="pagination-item__link">
-                                <i class="pagination-item__icon fas fa-chevron-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+                                        <div class="home-product-item__location">
+                                            TP. Hồ Chí Minh
+                                        </div>
 
-    </div>
+                                        <div class="home-product-item__favourite">
+                                            <i class="fas fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
 
-    <!-- footer -->
-    <footer class="footer">
-        <div class="grid">
-            <div class="grid__row">
-                <div class="grid__column-2-5">
-                    <h3 class="footer__heading">CHĂM SÓC KHÁCH HÀNG</h3>
-                    <ul class="footer-list">
-                        <li class="footer-item">
-                            <a href="" class="footer-item__link">Trung Tâm Trợ Giúp</a>
-                        </li>
-                        <li class="footer-item">
-                            <a href="" class="footer-item__link">Shopee Blog</a>
-                        </li>
-                        <li class="footer-item">
-                            <a href="" class="footer-item__link">Shopee Mall</a>
-                        </li>
-                        <li class="footer-item">
-                            <a href="" class="footer-item__link">Hướng Dẫn Mua Hàng</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="grid__column-2-5">
-                    <h3 class="footer__heading">VỀ SHOPEE</h3>
-                    <ul class="footer-list">
-                        <li class="footer-item">
-                            <a href="" class="footer-item__link">Trung Tâm Trợ Giúp</a>
-                        </li>
-                        <li class="footer-item">
-                            <a href="" class="footer-item__link">Shopee Blog</a>
-                        </li>
-                        <li class="footer-item">
-                            <a href="" class="footer-item__link">Shopee Mall</a>
-                        </li>
-                        <li class="footer-item">
-                            <a href="" class="footer-item__link">Hướng Dẫn Mua Hàng</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="grid__column-2-5">
-                    <h3 class="footer__heading">VỀ SHOPEE</h3>
-                    <ul class="footer-list">
-                        <li class="footer-item">
-                            <a href="" class="footer-item__link">Trung Tâm Trợ Giúp</a>
-                        </li>
-                        <li class="footer-item">
-                            <a href="" class="footer-item__link">Shopee Blog</a>
-                        </li>
-                        <li class="footer-item">
-                            <a href="" class="footer-item__link">Shopee Mall</a>
-                        </li>
-                        <li class="footer-item">
-                            <a href="" class="footer-item__link">Hướng Dẫn Mua Hàng</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="grid__column-2-5">
-                    <h3 class="footer__heading">THEO DÕI CHÚNG TÔI TRÊN</h3>
-                    <ul class="footer-list">
-                        <li class="footer-item">
-                            <a href="" class="footer-item__link">
-                                <i class="footer-item__icon fab fa-facebook"></i>
-                                Facebook
-                            </a>
-                        </li>
-                        <li class="footer-item">
-                            <a href="" class="footer-item__link">
-                                <i class="footer-item__icon fab fa-instagram"></i>
-                                Instagram
-                            </a>
-                        </li>
-                        <li class="footer-item">
-                            <a href="" class="footer-item__link">
-                                <i class="footer-item__icon fab fa-linkedin"></i>
-                                Linkedin
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="grid__column-2-5">
-                    <h3 class="footer__heading">TẢI ỨNG DỤNG SHOPEE NGAY THÔI</h3>
-                    <div class="footer__download">
-                        <img src="./assets/images/qr_app.png" alt="qr download" class="footer__download-qr">
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-20%</span>
+                                            <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
+                                        </div>
+                                    </a>
+                                </div>
 
-                        <div class="footer__download-apps">
-                            <a href="" class="footer__download-app-link">
-                                <img src="./assets/images/app_store.png" alt="app store"
-                                    class="footer__download-app-img">
-                            </a>
-                            <a href="" class="footer__download-app-link">
-                                <img src="./assets/images/gg_play.png" alt="gg play" class="footer__download-app-img">
-                            </a>
+                                <div class="col l-2-4 m-4 c-6">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img"
+                                            style="background-image: url(./assets/images/notify.jpg);"></div>
 
+                                        <h4 class="home-product-item__name">
+                                            Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
+                                            chơi game cao cấp chống mồ hôi ngón tay tốt
+                                        </h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">1.200.000đ</span>
+                                            <span class="home-product-item__price-current">960.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__action">
+                                            <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
+                                            <span class="home-product-item__like ">
+                                                <i class="home-product-item__like-icon-empty far fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fas fa-heart"></i>
+                                            </span>
+
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">Đã bán 2,2k</span>
+                                        </div>
+
+
+                                        <div class="home-product-item__location">
+                                            TP. Hồ Chí Minh
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fas fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-20%</span>
+                                            <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="col l-2-4 m-4 c-6">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img"
+                                            style="background-image: url(./assets/images/notify.jpg);"></div>
+
+                                        <h4 class="home-product-item__name">
+                                            Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
+                                            chơi game cao cấp chống mồ hôi ngón tay tốt
+                                        </h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">1.200.000đ</span>
+                                            <span class="home-product-item__price-current">960.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__action">
+                                            <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty far fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fas fa-heart"></i>
+                                            </span>
+
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">Đã bán 2,2k</span>
+                                        </div>
+
+
+                                        <div class="home-product-item__location">
+                                            TP. Hồ Chí Minh
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fas fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-20%</span>
+                                            <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="col l-2-4 m-4 c-6">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img"
+                                            style="background-image: url(./assets/images/notify.jpg);"></div>
+
+                                        <h4 class="home-product-item__name">
+                                            Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
+                                            chơi game cao cấp chống mồ hôi ngón tay tốt
+                                        </h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">1.200.000đ</span>
+                                            <span class="home-product-item__price-current">960.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__action">
+                                            <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
+                                            <span class="home-product-item__like ">
+                                                <i class="home-product-item__like-icon-empty far fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fas fa-heart"></i>
+                                            </span>
+
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">Đã bán 2,2k</span>
+                                        </div>
+
+
+                                        <div class="home-product-item__location">
+                                            TP. Hồ Chí Minh
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fas fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-20%</span>
+                                            <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="col l-2-4 m-4 c-6">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img"
+                                            style="background-image: url(./assets/images/notify.jpg);"></div>
+
+                                        <h4 class="home-product-item__name">
+                                            Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
+                                            chơi game cao cấp chống mồ hôi ngón tay tốt
+                                        </h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">1.200.000đ</span>
+                                            <span class="home-product-item__price-current">960.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__action">
+                                            <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty far fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fas fa-heart"></i>
+                                            </span>
+
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">Đã bán 2,2k</span>
+                                        </div>
+
+
+                                        <div class="home-product-item__location">
+                                            TP. Hồ Chí Minh
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fas fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-20%</span>
+                                            <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="col l-2-4 m-4 c-6">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img"
+                                            style="background-image: url(./assets/images/notify.jpg);"></div>
+
+                                        <h4 class="home-product-item__name">
+                                            Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
+                                            chơi game cao cấp chống mồ hôi ngón tay tốt
+                                        </h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">1.200.000đ</span>
+                                            <span class="home-product-item__price-current">960.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__action">
+                                            <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty far fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fas fa-heart"></i>
+                                            </span>
+
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">Đã bán 2,2k</span>
+                                        </div>
+
+
+                                        <div class="home-product-item__location">
+                                            TP. Hồ Chí Minh
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fas fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-20%</span>
+                                            <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="col l-2-4 m-4 c-6">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img"
+                                            style="background-image: url(./assets/images/notify.jpg);"></div>
+
+                                        <h4 class="home-product-item__name">
+                                            Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
+                                            chơi game cao cấp chống mồ hôi ngón tay tốt
+                                        </h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">1.200.000đ</span>
+                                            <span class="home-product-item__price-current">960.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__action">
+                                            <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty far fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fas fa-heart"></i>
+                                            </span>
+
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">Đã bán 2,2k</span>
+                                        </div>
+
+
+                                        <div class="home-product-item__location">
+                                            TP. Hồ Chí Minh
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fas fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-20%</span>
+                                            <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="col l-2-4 m-4 c-6">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img"
+                                            style="background-image: url(./assets/images/notify.jpg);"></div>
+
+                                        <h4 class="home-product-item__name">
+                                            Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
+                                            chơi game cao cấp chống mồ hôi ngón tay tốt
+                                        </h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">1.200.000đ</span>
+                                            <span class="home-product-item__price-current">960.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__action">
+                                            <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty far fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fas fa-heart"></i>
+                                            </span>
+
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">Đã bán 2,2k</span>
+                                        </div>
+
+
+                                        <div class="home-product-item__location">
+                                            TP. Hồ Chí Minh
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fas fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-20%</span>
+                                            <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="col l-2-4 m-4 c-6">
+                                    <a class="home-product-item" href="#">
+                                        <div class="home-product-item__img"
+                                            style="background-image: url(./assets/images/notify.jpg);"></div>
+
+                                        <h4 class="home-product-item__name">
+                                            Găng tay chơi game Shezi, Memo sợi bạc thủy tinh cao cấp 2 ngón, Bao tay
+                                            chơi game cao cấp chống mồ hôi ngón tay tốt
+                                        </h4>
+
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-old">1.200.000đ</span>
+                                            <span class="home-product-item__price-current">960.000đ</span>
+                                        </div>
+
+                                        <div class="home-product-item__action">
+                                            <!-- thêm --liked thì hiện tim đỏ, và ngược lại -->
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty far fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fas fa-heart"></i>
+                                            </span>
+
+                                            <div class="home-product-item__rating">
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span class="home-product-item__sold">Đã bán 2,2k</span>
+                                        </div>
+
+
+                                        <div class="home-product-item__location">
+                                            TP. Hồ Chí Minh
+                                        </div>
+
+                                        <div class="home-product-item__favourite">
+                                            <i class="fas fa-check"></i>
+                                            <span>Yêu thích</span>
+                                        </div>
+
+                                        <div class="home-product-item__sale-off">
+                                            <span class="home-product-item__sale-off-percent">-20%</span>
+                                            <!-- <span class="home-product-item__sale-off-label">GIẢM</span> -->
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
+
+                        <ul class="pagination home-product__pagination hide-on-mobile">
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">
+                                    <i class="pagination-item__icon fas fa-chevron-left"></i>
+                                </a>
+                            </li>
+
+
+                            <li class="pagination-item pagination-item--actice">
+                                <a href="" class="pagination-item__link">1</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">2</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">3</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">4</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">5</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">...</a>
+                            </li>
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">14</a>
+                            </li>
+
+
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">
+                                    <i class="pagination-item__icon fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
+
         </div>
 
-        <div class="footer__bottom">
-            <div class="grid">
-                <p class="footer__text">© 2015 - Bản quyền thuộc về Công ty TNHH Shopee</p>
+        <!-- footer -->
+        <footer class="footer">
+            <div class="grid wide footer__content">
+                <div class="row">
+                    <div class="col l-2-4 m-4 c-6">
+                        <h3 class="footer__heading">CHĂM SÓC KHÁCH HÀNG</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Trung Tâm Trợ Giúp</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Shopee Blog</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Shopee Mall</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Hướng Dẫn Mua Hàng</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col l-2-4 m-4 c-6">
+                        <h3 class="footer__heading">VỀ SHOPEE</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Trung Tâm Trợ Giúp</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Shopee Blog</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Shopee Mall</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Hướng Dẫn Mua Hàng</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col l-2-4 m-4 c-6">
+                        <h3 class="footer__heading">VỀ SHOPEE</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Trung Tâm Trợ Giúp</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Shopee Blog</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Shopee Mall</a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">Hướng Dẫn Mua Hàng</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col l-2-4 m-4 c-6">
+                        <h3 class="footer__heading">THEO DÕI CHÚNG TÔI TRÊN</h3>
+                        <ul class="footer-list">
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">
+                                    <i class="footer-item__icon fab fa-facebook"></i>
+                                    Facebook
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">
+                                    <i class="footer-item__icon fab fa-instagram"></i>
+                                    Instagram
+                                </a>
+                            </li>
+                            <li class="footer-item">
+                                <a href="" class="footer-item__link">
+                                    <i class="footer-item__icon fab fa-linkedin"></i>
+                                    Linkedin
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col l-2-4 m-4 c-6">
+                        <h3 class="footer__heading">TẢI ỨNG DỤNG SHOPEE NGAY THÔI</h3>
+                        <div class="footer__download">
+                            <img src="./assets/images/qr_app.png" alt="qr download" class="footer__download-qr">
+
+                            <div class="footer__download-apps">
+                                <a href="" class="footer__download-app-link">
+                                    <img src="./assets/images/app_store.png" alt="app store"
+                                        class="footer__download-app-img">
+                                </a>
+                                <a href="" class="footer__download-app-link">
+                                    <img src="./assets/images/gg_play.png" alt="gg play"
+                                        class="footer__download-app-img">
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-    </footer>
+            <div class="footer__bottom">
+                <div class="grid wide">
+                    <p class="footer__text">© 2015 - Bản quyền thuộc về Công ty TNHH Shopee</p>
+                </div>
+            </div>
+
+        </footer>
     </div>
 
 
@@ -1400,7 +1450,7 @@
 
 
 
-
+    </div>
 
 </body>
 

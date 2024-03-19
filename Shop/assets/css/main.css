@@ -1,3 +1,7 @@
+.app{
+    overflow: hidden;
+}
+
 .header{
     height: var(--header-height);
     width: 100%;
@@ -8,7 +12,7 @@
 .navbar{
     display: flex;
     justify-content: space-between;
-    margin: 0 40px;
+    margin: 0 0px;
 }
 
 .navbar-list{
@@ -493,8 +497,23 @@
     /* đặt logo và các đối tượng khác vào giữa chiều cao */
     display: flex;
     align-items: center; /*căn giữa trực cross axis*/
-    margin: 0 60px;
+    margin: 0 16px 0 0;
 
+}
+
+.header__mobile-search{
+    padding: 12px 12px 12px 20px; /**/
+    display: none;
+}   
+
+.header__mobile-search-icon{
+    font-size: 2.6rem;
+    color: var(--white-color);
+}   
+
+/* trượt từ trong ra, khi checkbox đc check  */
+.header-search-checkbox:checked ~ .header__search{
+    display: flex;
 }
 
 .header__search{
@@ -505,8 +524,119 @@
     /* overflow: hidden sẽ làm cho các lớp con của đối tượng bị hidden sẽ bị hide luôn */
     display: flex;
     align-items: center;
+
 }
 
+/* header sort bar modile-tablet */
+
+.header__bar{
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    height: var(--header-sort-bar-height); /**/
+    background-color: var(--white-color);
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    display: none;
+
+}
+
+.header__bar-item{
+    flex: 1;
+}
+
+.header__bar-item:first-child .header__bar-link::before{
+    display: none;
+}
+
+.header__bar-link{
+    position: relative;
+    text-decoration: none;
+    columns: var(--text-color);
+    font-size: 1.4rem;
+    display: block;
+    height: 100%;
+    line-height: var(--header-sort-bar-height); /**/
+    text-align: center;
+    color: var(--text-color);
+    font-weight: 500;
+
+}
+
+/* .header__bar-link::before{
+    position: absolute;
+    content: "";
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    height: 60%;
+    border-left: 1px solid #e5e5e5;
+} */
+
+.header__bar-item--active .header__bar-link{
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+
+/*  */
+.header__bar_product{
+    position: fixed;
+    top: calc(var(--header-height) + var(--header-sort-bar-height));
+    left: 0;
+    right: 0;
+    height: var(--header-sort-bar-height); /**/
+    background-color: var(--white-color);
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    display: none;
+}
+
+.header__bar_product-item{
+    flex: 1;
+
+}
+
+.header__bar_product-link{
+    position: relative;
+    text-decoration: none;
+    columns: var(--text-color);
+    font-size: 1.3rem;
+    display: block;
+    height: 100%;
+    line-height: var(--header-sort-bar-height); /**/
+    text-align: center;
+    color: var(--text-color);
+}
+
+.header__bar_product-link::before{
+    position: absolute;
+    content: "";
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    height: 40%;
+    border-left: 1px solid #e5e5e5;
+}
+
+.header__bar_product-item--active .header__bar_product-link{
+    color: var(--primary-color);
+}
+
+
+
+/*  */
 .header__logo{
     width: 200px;
 }
@@ -514,6 +644,8 @@
 .header__logo-link{
     text-decoration: none;
     color: transparent; 
+    display: block;
+    line-height: 0;
 }
 
 .header__logo-img{
@@ -757,7 +889,7 @@
     position: absolute;
     left: 0;
     top: calc(100% + 4px);
-    width: calc(100% - 25px);
+    width: calc(100% + 129px);
     background-color: var(--white-color);
     border-radius: 2px;
     box-shadow: 0 0 3px #ccc;
@@ -811,7 +943,7 @@
     padding-left: 0;
     list-style: none;
     /* Nếu quá nhiều hàng thì nó scroll, vh là viewport height set theo %chiều cao trình duyệt */
-    height: 50vh;
+    max-height: 50vh;
     overflow-y: auto;
     /*  */
 }
@@ -1271,6 +1403,7 @@ i.home-product-item__like-icon-fill{ /*tăng độ ưu tiên*/
 
 .home-product__pagination{
     margin: 50px 0 32px;
+    padding-left: 0;
 }
 
 /* footer */
@@ -1283,14 +1416,12 @@ i.home-product-item__like-icon-fill{ /*tăng độ ưu tiên*/
 .footer__heading{
     font-size: 1.2rem;
     color: var(--text-color);
-    margin-left: 20px;
 }
 
 .footer-list{
     /* bỏ đi padding left mặc định của thẻ ul */
     padding-left: 0;
     list-style: none;
-    margin-left: 20px;
     
 }
 
